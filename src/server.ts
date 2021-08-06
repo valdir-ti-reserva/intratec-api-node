@@ -1,13 +1,15 @@
 import 'reflect-metadata';
 import express from 'express';
 
+import { router } from './routes';
+
 import './database';
 
-const app = express();
+const app  = express();
 const PORT = 3000;
 
-app.get('/', (_, res) => {
-  return res.send('API Intratec!')
-});
+app.use(express.json());
+
+app.use(router);
 
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
