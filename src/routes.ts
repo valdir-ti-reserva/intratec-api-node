@@ -6,7 +6,7 @@ const router = Router();
 const createUserController = new CreateUserController();
 
 router.get('/', (_, res) => {
-  return res.send('API Intratec!')
+  return res.send('API ok!')
 });
 
 router.post('/users', createUserController.handle); 
