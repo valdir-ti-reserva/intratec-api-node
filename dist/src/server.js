@@ -11,7 +11,7 @@ var routes_1 = require("./routes");
 require("./database");
 dotenv_1.default.config();
 var app = express_1.default();
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 app.use(express_1.default.json());
 app.use(routes_1.router);
 app.use(function (err, req, res, next) {
