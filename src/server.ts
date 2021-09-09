@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 import 'reflect-metadata'
 import express, { NextFunction, Request, Response} from 'express'
 import "express-async-errors"
@@ -5,6 +6,8 @@ import "express-async-errors"
 import { router } from './routes'
 
 import './database'
+
+dotenv.config()
 
 const app  = express()
 const PORT = 3000

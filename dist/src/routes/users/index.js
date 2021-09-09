@@ -1,0 +1,17 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.usersRouter = void 0;
+var express_1 = require("express");
+var ensureAuthenticated_1 = require("../../middlewares/ensureAuthenticated");
+var ListUsersController_1 = require("../../controllers/ListUsersController");
+var CreateUserController_1 = require("../../controllers/CreateUserController");
+var AuthenticateUserController_1 = require("../../controllers/AuthenticateUserController");
+var usersRouter = express_1.Router();
+exports.usersRouter = usersRouter;
+var listUsersController = new ListUsersController_1.ListUsersController();
+var createUserController = new CreateUserController_1.CreateUserController();
+var authenticateUserController = new AuthenticateUserController_1.AuthenticateUserController();
+usersRouter.post('/users', createUserController.handle);
+usersRouter.post('/login', authenticateUserController.handle);
+usersRouter.use(ensureAuthenticated_1.ensureAuthenticated);
+usersRouter.get('/users', listUsersController.handle);

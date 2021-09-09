@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.tagsRouter = void 0;
+var express_1 = require("express");
+var ensureAdmin_1 = require("../../middlewares/ensureAdmin");
+var ListTagsController_1 = require("../../controllers/ListTagsController");
+var CreateTagController_1 = require("../../controllers/CreateTagController");
+var tagsRouter = express_1.Router();
+exports.tagsRouter = tagsRouter;
+var listTagsController = new ListTagsController_1.ListTagsController();
+var createTagController = new CreateTagController_1.CreateTagController();
+tagsRouter.get('/tags', listTagsController.handle);
+tagsRouter.post('/tags', ensureAdmin_1.ensureAdmin, createTagController.handle);

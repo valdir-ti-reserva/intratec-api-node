@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.routes = void 0;
+var express_1 = require("express");
+var users_1 = require("./users");
+var tags_1 = require("./tags");
+var compliments_1 = require("./compliments");
+var routes = express_1.Router();
+exports.routes = routes;
+routes.use(users_1.usersRouter);
+routes.use(tags_1.tagsRouter);
+routes.use(compliments_1.complimentsRouter);
