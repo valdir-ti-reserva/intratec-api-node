@@ -1,5 +1,6 @@
 import {Entity, PrimaryColumn, Column, CreateDateColumn, JoinColumn, ManyToOne} from 'typeorm'
 import { v4 as uuid } from 'uuid'
+import { Exclude } from 'class-transformer'
 
 import { Tag } from './Tag'
 import { User } from './User'
@@ -7,9 +8,11 @@ import { User } from './User'
 @Entity("compliments")
 class Compliment {
 
+  @Exclude()
   @PrimaryColumn()
   readonly id: string
 
+  @Exclude()
   @Column()
   user_sender: string
 
@@ -17,6 +20,7 @@ class Compliment {
   @ManyToOne(() => User)
   userSender: User
 
+  @Exclude()
   @Column()
   user_receiver: string
 
@@ -24,6 +28,7 @@ class Compliment {
   @ManyToOne(() => User)
   userReceiver: User
 
+  @Exclude()
   @Column()
   tag_id: string
 
@@ -34,6 +39,7 @@ class Compliment {
   @Column()
   message: string
 
+  @Exclude()
   @CreateDateColumn()
   created_at: Date
 
