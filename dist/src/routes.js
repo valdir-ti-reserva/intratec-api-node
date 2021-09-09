@@ -6,6 +6,6 @@ var index_1 = require("./routes/index");
 var router = express_1.Router();
 exports.router = router;
 router.get('/', function (_, res) {
-    return res.send('API ok!');
+    return res.status(200).json({ message: 'API ok!' });
 });
 router.use(index_1.routes);
