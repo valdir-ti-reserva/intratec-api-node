@@ -1,0 +1,22 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Intratec API",
+    "description": "General simulate CRM",
+    "termsOfService": "",
+    "contact": {
+      "email": "valdir.ti@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "API test"
+    },
+    {
+      "url": "https://intratec-api-node.herokuapp.com/",
+      "description": "API production on Heroku"
+    }
+  ]
+}
