@@ -24,7 +24,7 @@
       "get": {
         "summary": "Initial route",
         "description": "Initial route to test the app",
-        "tags": ["intial app route"],
+        "tags": ["Intial App Route"],
         "requestBody": {
           "content": {
             "application/json": {}
@@ -37,6 +37,49 @@
               "application/json": {
                 "schema": {
                   "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "Authenticate User",
+        "description": "Responsable to login the user",
+        "tags": ["Login"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
+              "examples": {
+                "user": {
+                  "value": {
+                    "email": "john@mail.com",
+                    "password": "12345"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Incorrect email"
+          },
+          "400": {
+            "description": "Email/Password incorrect"
+          },
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "description": "The user token"
                 }
               }
             }
