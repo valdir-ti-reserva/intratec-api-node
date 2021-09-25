@@ -88,6 +88,35 @@
       }
     },
     "/users": {
+      "get": {
+        "summary": "List users",
+        "description": "Responsable to list users",
+        "tags": ["List Users"],
+        "requestBody": {
+          "content": {
+            "application/json": {}
+          }
+        },
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "401": {
+            "description": "Token missing"
+          },
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#/components/schemas/Token"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "summary": "Create user",
         "description": "Responsable to create a user",
@@ -142,6 +171,12 @@
           "email": { "type": "string" },
           "password": { "type": "string" },
           "admin": { "type": "boolean" }
+        }
+      },
+      "Token": {
+        "type": "object",
+        "properties": {
+          "token": { "type": "string" }
         }
       }
     },
