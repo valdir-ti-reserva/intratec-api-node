@@ -237,6 +237,53 @@
                     }
                 }
             }
+        },
+        "/compliments": {
+            "post": {
+                "summary": "Create Compliment",
+                "description": "Responsable to create a compliment",
+                "tags": ["Compliments"],
+                "security": [{ "bearerAuth": [] }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Compliment"
+                            },
+                            "examples": {
+                                "tag": {
+                                    "value": {
+                                        "tag_id": "2fd38cd8-5828-48a1-967e-d4223459903e",
+                                        "user_receiver": "5c107063-4308-454e-a4e5-30d67a4465b3",
+                                        "message": "Tenha uma ótima noite!"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "SQLITE_CONSTRAINT: NOT NULL constraint failed: compliments.message"
+                    },
+                    "401": {
+                        "description": "Token missing"
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Compliment"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -260,6 +307,14 @@
                 "type": "object",
                 "properties": {
                     "name": { "type": "string" }
+                }
+            },
+            "Compliment": {
+                "type": "object",
+                "properties": {
+                    "tag_id": { "type": "string" },
+                    "user_receiver": { "type": "string" },
+                    "message": { "type": "string" }
                 }
             }
         },
